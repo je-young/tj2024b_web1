@@ -1,0 +1,68 @@
+[ JSP/서블릿 프로젝트 준비]
+	1. 자바 설치 . P.33 ~ P.34
+		1. https://www.oracle.com/java/technologies/javase/jdk17-archive-downloads.html
+		* 강의기준 : java version "17.0.12" 2024-07-16 LTS
+		* 자바 설치 확인 : 윈도우버튼 --> cmd(명령프롬프트) --> java -version
+	
+	2. 아파치 톰캣 설치 p.37
+		1. https://tomcat.apache.org/download-10.cgi
+		2. [32-bit/64-bit Windows Service Installer (pgp, sha512) ] 클릭 
+		3. [apache-tomcat-10.1.34.exe] 설치시작
+			[next] --> [ i agree ] --> [next] --> [next] --> 자바가 설치된 경로 [next] --> [install]
+		* 강의기준 : 아파치 톰캣 v10.1
+		* 시작표시줄에 아파치 톰캣이 실행중이라면 '종료'
+		* ctrl+alt+delete(작업관리자) --> 백그라운드 프로세스 --> 톰캣 강제종료
+	
+	3. 이클립스 설치 :  p.38
+		- Eclipse IDE for Enterprise Java and Web Developers ,
+		1. https://www.eclipse.org/downloads/
+		2. Install your favorite desktop IDE packages [download] 클릭 
+		3. 'File: eclipse-inst-jre-win64.exe ' 클릭 
+			1. [ Eclipse IDE for Enterprise Java and Web Developers ] 클릭 
+			2. [INSTALL] 클릭 
+	
+	4. 이클립스에 톰캣 서버 가져오기(연동) p.40 ~ p.41
+		1. [FILE] -> [NEW] -> [OTHER] -> wizards : server 입력 후 [server]클릭 -> [next ] -> 
+		2. [apach]폴더'Tomcat v10.1 Server ' -> [next ] -> 'tomcat installation directory' 에 설치된 톰캣 폴더 경로 넣어준다.
+		* ' C:\Program Files\Apache Software Foundation\Tomcat 10.1 '
+		3. [finish]
+		* 이클립스 하단에 [servers] 탭 확인 , ( servers)탭이 사라지면 상단 메뉴 [window] -> [show view] -> 모든 탭이 존재한다.[server]클릭
+			1. 서버 목록을 확인할 수 있다.
+			2. 특정 서버명을 더블클릭 하면 옵션 창이 나온다.
+				*[PORT] 
+					TOMCAT ADMIN PORT : 아무거나(8081 권장)
+					HTTP : 8080(기본값)
+					* 변경 사항이 있으면 ctrl+s(저장) 하고 종료한다.
+
+* 프로젝트 구조도 
+	1. 프로젝트명 
+		2. src 폴더
+			3. main 폴더
+				4. java 폴더 ( 주로 백엔드파일 : JAVA / 서블릿 파일
+				4. webapp 폴더 ( 주로 프론트파일 : HTML,CSS,JS,IMG / JSP 파일 등
+					5. WEB-INF : 웹 설정 파일 
+						6. lib : 프로젝트 사용할 외부 라이브러들 .jar 파일들을 넣어두는 곳 ( JDBC )
+						6. web.xml : HTTP 통신이 서블릿과 매핑/연결할 수 있도록 설정 파일
+	[규칙]			
+	* 모든 프론트파일은 무조건 webapp 폴더 아래에 존재해야한다. web-inf 또는 mate-inf 넣지 않는다.
+	* 모든 백엔트파일은 무조건 java 폴더 아래에 존재해야한다.
+		-> 경로가 이상하면 서버가 파일들을 못찾는다. 경로 규칙은 지켜야한다.
+
+		5. 동적 웹 페이지 프로젝트 만들기 p.43 ~ p.44
+			1. [FILE] -> [NEW] -> [ Dynamic Web Project ]
+			2. 프로젝트명과 서버 선택  
+			* project name : 아무거나 ( 강의 : tj2024b_web1 )
+			* target runtime : apache tomcat v10.1
+			3. [next] -> [next] -> 마지막 창에서 'generate web.xml deployment descriptor' 체크 --> [finish]
+			
+		6. JSP 파일 생성 p.45 
+			webapp 폴더 오른쪽클릭 --> [new] --> 'JSP FILE' 클릭 --> FILE NAME : hello --> [finish]
+		
+		7.JSP 파일 실행 p.46
+			1. 실행 JSP 파일에서 ctrl+f11
+			2. 서버 선택 : 현재 준비된 서버를 선택/클릭 -> [NEXT]
+			3. [ configured ] 에 실행 할 프로젝트를 이동 한다. -> [finish]
+			
+		* 이클립스가 jsp/서블릿 실행할 때 사용하는 브라우저 변경 p.47 NOTE
+			상단메뉴 --> [window] -> [web Browser] -> chrome 권장
+			
