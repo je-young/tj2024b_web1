@@ -20,7 +20,7 @@ public class Task2 extends HttpServlet {
     public Task2() {
         super();
         // TODO Auto-generated constructor stub
-        System.out.println("방법 : URL를 매핑하는 Task2 클래스를 만드시오. (서블릿생성)");
+        System.out.println("방법2 : URL를 매핑하는 Task2 클래스를 만드시오. (서블릿생성)");
     }
 
 	/**

@@ -1,0 +1,57 @@
+[ HTTP ] HyperText Transfer Protocol
+	- 문자 이동 프로토콜 : 객체지향 아니므로 문자 자료만 통신이 가능하다.
+	1. 정의 : 웹 에서 사용하는 문자 통신 규약
+	2. 특징 
+		1. 무상태 프로로콜 ( 상태 없고 -> 저장기능 없다 )
+		2. 독립적 , 이전 요청 과 다음 요청은 다르다
+		3. TCP/IP 프로토콜의 종속되어 동작 PORT 80/8080 사용한다.
+	3. 주소 체계
+		URL : 웹 주소 , 네트워크 상의 자료가 어디에 있는지 위치를 표시하는 규약   
+			http://ip:port/자료위치
+			https://nid.naver.com/nidlogin.login : 네이버의 login(html) 이 위치한 주소 
+		URI : 각종 자료들의 유일한 이름이나 위치를 표시하는 규약 , URL + 매개변수명 = 값 
+			http://ip/port/자료위치?매개변수1=값1&매개변수2=값2
+			https://finance.naver.com/item/main.naver?code=005930
+			(URL) https://finance.naver.com/item/main.naver
+			(URI) https://finance.naver.com/item/main.naver?code=005930
+			
+	4. HTTP Header ( HTTP 통신 정보 )
+		[ 주요 ]
+		1. HTTP ***METHOD*** : HTTP 이용한 통신 요청할 때 분류 하는 규칙 
+		2. HTTP ***BODY*** : HTTP 이용하여 데이터의 내용/본문 보낼때 사용되는 규칙
+		3. HTTP Content-Type : HTTP 이용한 데이터의 타입 정보 
+		4. HTTP HOST : HTTP 이용한 통신 요청하는 서버의 URL 주소 
+	
+	5. HTTP METHOD 종류 	  CRUD			HTTP기반의 연결(매핑)구축(RESTFUL)	HttpServlet
+		1. get 			: Read			get매핑							doGet()
+		2. post			: Create		post매핑							doPost()
+		3. put 			: Update		put매핑							doPut()
+		4. delete 		: Delete		delete패핑						doDelete()
+	
+	6. HTTP 사용처 : 
+		1. (사용자) 브라우저( 크롬,엣지,사파리 등등) 상단에 HTTP 입력한다. 브라우저 상단 주소 입력창은 GET 방식 이다.
+		2. (개발자) Talend Api ( restful test )
+			[설치]
+			1. (크롬) 구글 에서 'talend api' 검색 , https://chromewebstore.google.com/detail/talend-api-tester-free-ed/aejoelaoggembcahagimdiliamlcdmfm?hl=ko
+			2. [크롬에 추가] 클릭 
+			3. [ 확장 프로그앰에 추가 ] 클릭 
+			[사용]
+			크롬 주소 입력창 오른쪽 끝에 *확장프로그램[아이콘] 클릭 
+			
+	6. HTTP 가 데이터를 보내는 방법
+		방법1. 쿼리스트링
+			1. 정의 : url 주소상의 '?'물음표 구분하여 매개변수명 = 값 표시하고 여러개 일경우 '&'(엔퍼센트) 구분한다.
+				예1]
+				https://finance.naver.com/item/main.naver?code=005930
+				(URL) https://finance.naver.com/item/main.naver
+				(쿼리스트링) ?code=005930
+					매개변수명은 code 
+					매개변수값은 005930
+				예2]
+				https://www.leelin.co.kr/shop/shopdetail.html?branduid=1168891&search=&xcode=028
+				(URL)https://www.leelin.co.kr/shop/shopdetail.html
+				(쿼리스트링) 
+					매개변수명 : branduid ,	xcode
+					매개변수값 : 1168891  ,	028
+			
+		방법2. HTTP header(정보) body
