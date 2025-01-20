@@ -18,13 +18,14 @@
 	4. HTTP Header ( HTTP 통신 정보 )
 		[ 주요 ]
 		1. HTTP ***METHOD*** : HTTP 이용한 통신 요청할 때 분류 하는 규칙 
+			* 과거에는 GET 방식으로 만 통신 했지만 현재는 다양한 방식을 제공한다.
 		2. HTTP ***BODY*** : HTTP 이용하여 데이터의 내용/본문 보낼때 사용되는 규칙
 		3. HTTP Content-Type : HTTP 이용한 데이터의 타입 정보 
 		4. HTTP HOST : HTTP 이용한 통신 요청하는 서버의 URL 주소 
 	
 	5. HTTP METHOD 종류 	  CRUD			HTTP기반의 연결(매핑)구축(RESTFUL)	HttpServlet
 		1. get 			: Read			get매핑							doGet()
-		2. post			: Create		post매핑							doPost()
+		2. post			: Create		post매핑						doPost()
 		3. put 			: Update		put매핑							doPut()
 		4. delete 		: Delete		delete패핑						doDelete()
 	
@@ -37,10 +38,13 @@
 			3. [ 확장 프로그앰에 추가 ] 클릭 
 			[사용]
 			크롬 주소 입력창 오른쪽 끝에 *확장프로그램[아이콘] 클릭 
+		3. ( JS ) Fetch, Ajax(제이쿼리), Axios(리액트) 등등 : JS가 제공하는 HTTP 통신 라이브러리
 			
 	6. HTTP 가 데이터를 보내는 방법
+		* 우체국에 편지(통신) 보낸다. 편지봉투( 보낸사람 , 받는사람 = url / queryString ), 편지지( 내용물 = body )
 		방법1. 쿼리스트링
 			1. 정의 : url 주소상의 '?'물음표 구분하여 매개변수명 = 값 표시하고 여러개 일경우 '&'(엔퍼센트) 구분한다.
+			2. 요청 : GET , POST , PUT , DELETE 메소드 에서 사용 가능.
 				예1]
 				https://finance.naver.com/item/main.naver?code=005930
 				(URL) https://finance.naver.com/item/main.naver
@@ -55,3 +59,45 @@
 					매개변수값 : 1168891  ,	028
 			
 		방법2. HTTP header(정보) body
+			1. 정의 : HTTP 요청 과 응답 내용 자체를 전달하는 역할
+			2. 요청 : POST , PUT 메소드 지원 / 권장. ( 보안상 좋다. )
+				1. content-type
+			3. 응답 : 
+				1. HTTP 상태 메세지(2xx:성공 , 4xx:프로토콜문제 , 5xx:서버문제)
+				2. content-type
+
+	7. HTTP Content - Type
+		1. 정의 : HTTP 의 요청 과 응답의 본문 데이터 형식 을 나타내는 HTTP header 정보 중 하나.
+		2. 목적 : 서버와 클라이언트가 데이터를 주고 받는데 있어서 형식 명시/표시 한다.
+		3. 주의 : HTTP는 기본적으로 문자열 자료만 가능하다.
+		4. 타입 종류 : 
+			1. text/html							: html 문서
+			2. application/json						: JSON 데이터
+			3. application/xml						: xml 데이터
+			4. application/plain					: 일반 텍스트 데이터
+			5. application/x-www-form-urlencoded	: 폼 형식의 데이터, html 의 <form> 마크업
+			6. multipart/form-data					: 첨부파일 업로드 , 대용량 데이터(바이트)
+		
+		* JAVA / JS / PYTHON 아래와 같이 다양한 타입 지원한다.
+			"3" , 자료/값 = 3 , 자료타입/분류/타입 = 문자열
+			 3  , 자료/값 = 3 , 자료타입/분류/타입 = 정수
+			 
+	* 주 웹/앱 개발의 통신 구조 , 서로 다른 언어들간의 주고 받는 방법
+		* 타입변환 : 서로 다른 언어들가 통신할때 타입변환이 필요한 이유 : 각 언어들은 서로 다른 타입들을 지원하기 때문에.
+		HTML -- document.querySelector() --> JS -- HTTP --> JAVA(서블릿) -- JDBC --> DB
+		1. html 과 JSON 자료를 이동간
+			html --> js : document.querySelector().value
+			js --> html : document.querySelector().innerHTML
+			* paseInt() 등 타입변환이 필요했다.
+			
+		2. JS 와 JAVA 자료를 이동간
+			JS --> JAVA : HTTP 이용한, 요청 request
+			JAVA --> JS : HTTP 이용한, 응압 response
+			* Integer.parseInt() 등 타입변환이 필요했다.
+			* 두 언어간 웹에서 자주 사용되는 통신 데이터타입 : application/json
+			* JSON( JavaScript Object Notation ) , JS언어는 JSON 타입을 알지만 JAVA언어는 JSON 	타입 모른다.
+			
+		3. JAVA 와 DB 자료를 이동간 : DAO(JDBC)
+		
+			
+			
