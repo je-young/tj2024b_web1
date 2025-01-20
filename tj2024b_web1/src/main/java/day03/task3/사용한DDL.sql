@@ -17,3 +17,13 @@ create table waiting(
     count int ,
     constraint primary key(num)
 );
+
+drop database if exists waitingDB;
+create database waiting;
+use waiting;
+create table waiting(
+	num int auto_increment ,
+    phone longtext , 
+    count int ,
+    constraint primary key(num)
+);
