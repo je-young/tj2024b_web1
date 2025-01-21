@@ -43,9 +43,9 @@
 				DNS : 53
 				사설 PORT : 1000~5000 으로 아무거나 사용. (중복불가능)
 					1. MYSQL : 3306 2. 톰캣 ADMIN PORT : 8081(아무거나)
-				* PORT 강제 종료 : ( 프로세스 강제 종료 )
+				* PORT 강제 종료( 프로세스 강제 종료 ) 
 					1. port 확인 : 윈도우 -> cmd -> netstat -ano
-					2. taskkill /f /pid port번호						ex] tskkill /f /pid 33464(확인된번호)
+					2. taskkill /f /pid pid번호						ex] tskkill /f /pid 33464(확인된번호)
 		3. HTTP : 
 			1. 체계 : http://ip:port 		, ip 와 port 사이에 : (콜론) 넣어서 구분
 		4. HTTPS 

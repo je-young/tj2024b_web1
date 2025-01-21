@@ -23,7 +23,7 @@ public class Example5 extends HttpServlet{
 	@Override
 	protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 		String result = "java";
-		resp.setContentType("application/json"); // 문자열 1개는 application/json으로 타입변환 불가능. text/plain
+		resp.setContentType("text/plain"); // 오류 : 문자열 1개는 application/json으로 타입변환 불가능. text/plain
 		resp.getWriter().print(result);
 	} // doPost end
 	
