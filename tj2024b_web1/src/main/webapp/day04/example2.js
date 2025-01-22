@@ -105,6 +105,10 @@ const func15 = () => {
 
 /*
 	fetch( `HTTP URL` , {옵션} )
+		.then( response객체 => response.타입() )
+		.then( 타입변환된자료 => { 실행문 } )
+		
+	
 		URL 
 			1. 통신할 서블릿의 URL 주소 
 			2. 쿼리스트링 
@@ -116,13 +120,27 @@ const func15 = () => {
 				- POST : fetch( `HTTP URL` , { method: `POST` } )
 				- PUT : fetch( `HTTP URL` , { method: `PUT` } )
 				- DELETE : fetch( `HTTP URL` , { method: `DELETE` } )
-			2. HEADES
+			2. HEADERS
 				- { 'Content-Type' : 'application/json' }
-			3. BODY :
-				- 전송할 데이터 자료
+			3. BODY : 
+				- 전송할 데이터 자료 
+		then( )
+			1. 응답객체 : 통신한 응답의 정보가 담긴 HTTP 응답 객체 반환 
+				then( 응답객체명 => 응답객체명.json() ) : response content-type : application/json 변환
+				then( 응답객체명 => 응답객체명.text() ) : response content-type : text/plain 변환
+		then( )
+			1. 변환된 자료 객체 		
+		catch( )
+			
   	
+	[참고1 : 백틱]
 	`` : 백틱 템플릿 : 문자열 사이에 변수/함수 호출 과 연산식을 넣을수 있는 템플릿 
 		`문자열 ${ 변수명 } 문자열 ${ 함수명() } 문자열 ${ 연산 } `
+	
+	[참고2 : JSON 문자열 타입변환 ]
+		1. JSON.parse( )		: 문자열타입 --> JSON타입 변환 함수. 
+		2. JSON.stringify( )	: JSON타입 --> 문자열타입 변환 함수.
+		
 */
 
 

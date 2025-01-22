@@ -1,5 +1,5 @@
-
-// 1. 등록함수
+// * 함수명 만들때 JS내장함수와 겹치는 경우
+// 1. 등록 함수 , 실행조건 : 등록버튼 클릭했을때.
 const waitingWrite = () => {
 	// 1. html 으로 부터 input dom 가져오기
 	// - document.querySelector(선택자) : 선택자 마크업을 객체로 반환함수. 
