@@ -20,7 +20,7 @@ const boardWrite = () => {
 	
 	// 4. fetch 옵션
 	const option = {
-		mathod : 'POST' ,
+		method : 'POST' ,
 		headers : { 'Content-Type' : 'application/json' } ,
 		body : JSON.stringify( dataObj )
 	}
@@ -29,10 +29,10 @@ const boardWrite = () => {
 	fetch('/tj2024b_web1/day05/board' , option )
 	.then( response => response.json() )
 	.then( data => { 
-		if( data == true ){alert('글쓰기성공'); location.herf="/board.jap";}
+		if( data == true ){alert('글쓰기성공'); location.herf="board.jap";}
 		else{ alert('글쓰기실패');}
 	 } )
-	 .catch( error => { alert('시스템오류 : 관리자에게 문의'); } )
+	 .catch( error => { alert('시스템오류 : 관리자에게 문의'); console.log(error) } )
 	
 } // boardWrite end
 

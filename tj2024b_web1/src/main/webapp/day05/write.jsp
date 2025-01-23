@@ -19,7 +19,7 @@
 		<button onclick="boardWrite()"> 등록 </button>
 	</div>
 	
-	<script src="board.js"></script>
+	<script src="write.js"></script>
 	<jsp:include page="/day05/footer.jsp"></jsp:include>
 
 </body>

@@ -75,15 +75,15 @@ public class BoardDao {
             ps.setInt( 1 , bno);
             ResultSet rs = ps.executeQuery();
             if( rs.next() ) {
-                    BoardDto boardDto = new BoardDto();
-                    boardDto.setBno( rs.getInt( "bno" ));
-                    boardDto.setBtitle( rs.getString("btitle") );
-                    boardDto.setBwriter( rs.getString( "bwriter" ));
-                    boardDto.setBdate( rs.getString( "bdate" ));
-                    boardDto.setBview( rs.getInt( "bview" ));
-                    boardDto.setBcontent( rs.getString("bcontent") );
-                    boardDto.setBpwd( rs.getString("bpwd"));
-                    return boardDto;
+            	BoardDto boardDto = new BoardDto();
+                boardDto.setBno( rs.getInt( "bno" ));
+                boardDto.setBtitle( rs.getString("btitle") );
+                boardDto.setBwriter( rs.getString( "bwriter" ));
+                boardDto.setBdate( rs.getString( "bdate" ));
+                boardDto.setBview( rs.getInt( "bview" ));
+                boardDto.setBcontent( rs.getString("bcontent") );
+                boardDto.setBpwd( rs.getString("bpwd"));
+                return boardDto;
             }
 		} catch (Exception e) {
 			System.out.println(e);
@@ -92,10 +92,39 @@ public class BoardDao {
 	} // findById end
 	
 	// [4] 게시물 수정 메소드
+	public boolean update( BoardDto boardDto ) {
+		try {
+			String sql =  "update board set btitle = ? , bcontent = ? "
+                    + " where bno = ?";
+			 PreparedStatement ps = conn.prepareStatement(sql);
+             ps.setString( 1 , boardDto.getBtitle()  );
+             ps.setString( 2 , boardDto.getBcontent() );
+             ps.setInt( 3 , boardDto.getBno() );
+             int count = ps.executeUpdate();
+             if( count == 1 ) return true;
+		} catch (Exception e) {
+			System.out.println(e);
+		}
+		return false;
+	} // update end
 	
 	
 	
 	// [5] 게시물 삭제 메소드
+	public boolean delete(int bno) {
+		try {
+			String sql = "delete from board where bno=?";
+			PreparedStatement ps = conn.prepareStatement(sql);
+			ps.setInt(1, bno);
+			int count = ps.executeUpdate();
+			if (count == 1) {
+				return true;
+			}
+		} catch (Exception e) {
+			System.out.println(e);
+		}
+		return false;
+	} // delete end
 	
 	
 	
