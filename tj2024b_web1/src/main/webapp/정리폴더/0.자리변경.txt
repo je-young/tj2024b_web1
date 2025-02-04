@@ -1,0 +1,31 @@
+[자리변경]된분들 확인 
+1. mysql 설치 여부
+   1. MySQL server
+   2. MySQL Workbench 8.0 CE
+
+2. jdk 설치 여부 , 
+   jdk17
+
+3. 이클립스 엔터프라이즈 설치 여부 
+Eclipse IDE for Enterprise Java and Web Developers - 2024-12
+
+4. 톰캣  설치 여부 
+   Tomcat 10.1
+   - 윈도우에서 톰캣 종료
+=============================================================
+5. git 프로젝트 clone 
+   주의할점 :
+      1. git토큰
+      2. working tree 폴더 아래에 프로젝트명을 import 
+      - 기존 동일한 프로젝트 또는 폴더명 삭제 
+6. 룸북 설치 .9번 메모장 참고 
+   1.이클립스 마다 1번
+
+7. 터미널에서 commit 작성자 변경
+   - 상단메뉴 -> show view -> terminal -> 모니터아이콘 클릭 -> git bash
+git config --global user.name git아이디
+git config --global user.email 아이디@이메일포함
+=============================================================
+8. 이클립스에서 서버 생성 
+   1. file -> new -> server -> 톰캣10.1 추가 
+   2. [server]탭 지정 서버 더블클릭 -> tomcat admin port : 8081권장 

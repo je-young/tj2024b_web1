@@ -1,0 +1,108 @@
+[ 입출력 ]
+	- 입력 : 자료가 컴퓨터에서 (키보드,파일,스캐너 등등)안으로
+	- 출력 : 자료가 컴퓨터에서 (모니터,파일,프린터 등등)밖으로
+[ 파일 ] 
+	- 컴퓨터가 자료들을 모아놓은 것, 
+	- 윈도우 기준의 파일은 최소 용량는 바이트   
+[ 스트림 ]
+	1. 정의 : 컴퓨터내 데이터/자료 가 다니는 데이터 통로
+	2. 데이터 : *바이트* 단위 의 데이터들이 스트림 통로로 데이터를 주고 받는다.
+	3. 사용처 : (프로그램-키보드),(프로그램-파일),(프로그램-네트워크) 등등
+[ 바이트 ] 
+	1. 정의 : 컴퓨터가 자료를 저장하는 용량 단위
+	2. 종류 : 
+		1. 비트 : 0 또는 1
+		2. 바이트 : 01010101 ( 8bit -> 1byte )
+		3. bit -> byte -> kb -> mb -> gb -> 등등
+[ 자바 파일 입출력 ]
+	1. 정의 : 자바에서 저장된 메모리(JVM)를 자바 외부인 파일(윈도우)에 입출력 하기.
+		->  코드파일이 저장된 메모리 와 실행중인 메모리는 다르다.
+		-> 편지지(편지내용-보조기억장치) 와 편지읽는동안(기억력-램-주기억장치) 다르다.
+	2. 목적 : 실행중인 자바(JVM/메모리/주기억주치) 데이터를 외부(C:드라이브/보조기억정치)에 저장하는 목적 
+		* 저장하는 방법 다양 : DB vs 파일처리 vs 톰캣세션 vs 브라우저세션 vs 자바JVM
+	3. 클래스 
+		1. FileOutputStream
+			1. .write()	
+		2. FileInputStream
+			1. .read( 바이트배열변수명 );
+			
+	* String 클래스 메소드 
+		1. .getBytes()	: 문자열 --> 바이트배열로 반환 함수.
+		2. new String( 바이트배열 ) : 바이트배열 --> 문자열로 객체 생성 
+			
+[ 자바 파일 클래스 ]
+	- 자바에서 파일을 다루는 여러가지 메소드 제공하는 클래스 
+	- 메소드 
+		* File 변수명 = new File("파일경로");
+		1. .isFile()	: 지정된 파일의 존재하는지 반환 메소드 , true/false
+		2. .getName()	: 지정된 파일의 이름 반환 메소드
+		3. .exists()	: 지정된 경로 존재 여부 반환 메소드 
+		4. .length()	: 지정된 파일의 (바이트)용량 반환 메소드 
+		5. .delete()	: 지정된 파일이 존재할 경우 삭제 메소드
+		6. .getPath()	: 지정된 파일의 경로 반환 메소드 
+		7. .mkdir()		: 지정된 경로 폴더 생성 메소드 
+		
+[ 서블릿 파일 클래스 ]
+	1. [ 업로드 라이브러리 종류 ]
+		cos.jar , commons(*)
+	2. commons 라이브러리 준비 
+		1. https://mvnrepository.com : 라이브러리 모음 홈페이지 
+		2. 'commons fileupload' 검색	
+			- Apache Commons FileUpload
+				https://mvnrepository.com/artifact/commons-fileupload/commons-fileupload/1.5
+			- Apache Commons IO
+				https://mvnrepository.com/artifact/commons-io/commons-io/2.18.0
+		3. webapp -> web-inf -> lib 에 2개 파일을 넣어준다.
+			commons-io-2.18.0 , commons-fileupload-1.5.jar
+		4. 해당 .jar 오른쪽 클릭 -> [build path] -> [add..]
+		
+		* 톰캣10.0 이후 버전에서는 commons.jar 사용하기 위해서는 *마이그레이션* 필요하다.
+			* 마이그레이션 : javax 경로들을 jakarta 로 변경하는 과정 , commons 라이브러리가 사용하는 javax 를 jakarta 변경하기
+			1. https://tomcat.apache.org/
+			2. 사이드바메뉴 -> [ Tomcat Migration Tool for Jakarta EE ] -> [shaded jar ] 다운로드
+			3. webapp -> web-inf -> lib 에 저장 , 'jakartaee-migration-1.0.9-shaded.jar'
+			4. 'jakartaee-migration-1.0.9-shaded.jar' 파일 오른쪽 클릭 -> [show in] -> [terminal]
+			5. 주의할점 : 각 jar의 버전 확인후 아래와 같이 작성한다. 
+				(1) java -jar jakartaee-migration-1.0.9-shaded.jar commons-fileupload-1.5.jar commons-fileupload-1.5.jar
+				(2) java -jar jakartaee-migration-1.0.9-shaded.jar commons-io-2.18.0.jar commons-io-2.18.0.jar
+				- 위 코드를 입력후 엔터 하면 마지막줄에 'successfully' 나오면 성공  
+				
+				
+		* 여러 사람들이 동일한 이름으로 업로드 했을때 식별자 만들기.
+			서로 다른 사람이 '짱구.jpg' 올렸을때 충돌 발생 방안
+			1. 날짜/(밀리초)시간 조합 
+			2. UUID( 범용 고유 식별자 표준 규약 )
+			3. pk조합 
+			등등
+	
+		
+		
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	

@@ -13,5 +13,13 @@
 	<classpathentry kind="lib" path="src/main/webapp/WEB-INF/lib/jackson-databind-2.18.2.jar"/>
 	<classpathentry kind="lib" path="src/main/webapp/WEB-INF/lib/jackson-core-2.18.2.jar"/>
 	<classpathentry kind="lib" path="src/main/webapp/WEB-INF/lib/jackson-annotations-2.18.2.jar"/>
+	<classpathentry kind="lib" path="src/main/webapp/WEB-INF/lib/commons-fileupload-1.5.jar"/>
+	<classpathentry kind="lib" path="src/main/webapp/WEB-INF/lib/commons-io-2.18.0.jar"/>
+	<classpathentry kind="lib" path="src/main/webapp/WEB-INF/lib/lombok.jar"/>
+	<classpathentry kind="src" path=".apt_generated">
+		<attributes>
+			<attribute name="optional" value="true"/>
+		</attributes>
+	</classpathentry>
 	<classpathentry kind="output" path="build/classes"/>
 </classpath>
