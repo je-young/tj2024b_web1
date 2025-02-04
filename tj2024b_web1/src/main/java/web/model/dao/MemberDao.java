@@ -16,7 +16,7 @@ public class MemberDao extends Dao{
 	// + 싱글톤 : 싱글 패턴 구현
 		// [1] 멤버변수에 static 인스턴스를 만든다.
 	@Getter // instance 변수에 getter를 적용하는 Lombok 어노테이션
-	private static MemberDao instanceDao = new MemberDao();
+	private static MemberDao instance = new MemberDao();
 	
 		// [2] 디폴트 생성자를 private 으로 설정한다. (Lombok의 @NoArgsConstructor로 대체됨)
 	// private MemberDao() {}
@@ -78,7 +78,8 @@ public class MemberDao extends Dao{
 	// [3]. 내정보 보기 SQL 처리 메소드
 	public MemberDto myInfo(int loginMno) {
 		try {
-			String sql = "select * member where mno = ? "; // [1] SQL 작성한다.
+			System.out.println(loginMno);
+			String sql = "select * from member where mno = ? "; // [1] SQL 작성한다.
 			PreparedStatement ps = conn.prepareStatement(sql); // [2] DB와 연동된 곳에 SQL 기재한다.
 			ps.setInt(1, loginMno); // [*] 기재된 SQL 에 매개변수 값 대입한다.
 			ResultSet rs = ps.executeQuery(); // [3] 기재된 SQL 실행하고 결과를 받는다.
@@ -126,7 +127,7 @@ public class MemberDao extends Dao{
 			// [*] SQL 의 ? 에 값을 대입한다.
 			ps.setString(1, memberDto.getMpwd()); // 비밀번호
 			ps.setString(2, memberDto.getMname()); // 이름
-			ps.setString(32, memberDto.getMphone()); // 전화번호
+			ps.setString(3, memberDto.getMphone()); // 전화번호
 			ps.setInt(4, memberDto.getMno()); // 회원번호
 			// [3] 기재된 SQL 실행하고 결과를 받는다.
 			int count = ps.executeUpdate(); // 실행 결과로 영향받은 행의 수를 반환
