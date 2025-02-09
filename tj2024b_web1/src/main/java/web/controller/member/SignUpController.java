@@ -1,5 +1,6 @@
 package web.controller.member;
 
+import java.awt.Point;
 import java.io.File;
 import java.io.IOException;
 import java.util.List;
@@ -17,6 +18,7 @@ import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
 import web.model.dao.MemberDao;
 import web.model.dto.MemberDto;
+import web.model.dto.PointDto;
 
 
 
@@ -80,8 +82,17 @@ public class SignUpController extends HttpServlet{
 			System.out.println(memberDto); // DTO 객체 출력 (디버깅용)
 			
 			// 12. DAO를 통해 회원가입 처리
-			boolean result = MemberDao.getInstance().signup(memberDto);
-			
+			int mno = MemberDao.getInstance().signup(memberDto);
+			boolean result = false;
+			if (mno > 0) {
+				// * 회원가입 성공시 포인트 지급
+				PointDto pointDto = new PointDto();
+				pointDto.setMno(mno);
+				pointDto.setPocomment("회원가입 축하");
+				pointDto.setPocount(100);
+				MemberDao.getInstance().setPoint(pointDto);
+				result = true;
+			}
 			// 13. 응답 설정 및 결과 반환
 			resp.setContentType("application/json"); // 응답 타입을 JSON으로 설정
 			resp.getWriter().print(result); // 회원가입 결과를 JSON 형식으로 반환

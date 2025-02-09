@@ -1,1 +1,37 @@
 @charset "UTF-8";
+
+/* header logo */
+.header_logo{
+	width: 60px;
+}
+
+/* 눈누 폰트 */
+@font-face {
+    font-family: 'Tenada';
+    src: url('https://fastly.jsdelivr.net/gh/projectnoonnu/noonfonts_2210-2@1.0/Tenada.woff2') format('woff2');
+    font-weight: normal;
+    font-style: normal;
+}
+
+/* 전체 폰트적용 */
+* {
+	font-family: 'Tenada';
+}
+
+/* header member profile */
+.header_profile{
+	width: 70px;
+	height: 70px;
+	border-radius: 40px;
+	border: 1px silid #e8e8e8;
+	padding: 1px;
+	object-fit: cover;
+}
+
+
+
+
+
+
+
+

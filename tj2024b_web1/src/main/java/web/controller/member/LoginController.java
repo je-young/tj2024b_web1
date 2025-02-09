@@ -12,6 +12,7 @@ import jakarta.servlet.http.HttpServletResponse;
 import jakarta.servlet.http.HttpSession;
 import web.model.dao.MemberDao;
 import web.model.dto.MemberDto;
+import web.model.dto.PointDto;
 
 
 @WebServlet("/member/login") // 서블릿 URL 매핑
@@ -34,10 +35,17 @@ public class LoginController extends HttpServlet {
 		if (loginMno > 0) { // 로그인 성공 시 (회원번호가 0보다 크면)
 			HttpSession session = req.getSession(); // 세션 객체 생성: 톰캣 서버의 저장소/메모리
 			// (1) 현재 로그인 성공한 회원번호를 세션 속성에 등록
-			session.setAttribute("loginMno", loginMno); // 세션에 속성 추가: 톰캣 서버의 데이터 저장
 			// (2) 추후에 로그인 인증에서 사용될 예정
             // (3) 세션의 활성화 유지 시간 설정
+			session.setAttribute("loginMno", loginMno); // 세션에 속성 추가: 톰캣 서버의 데이터 저장
 			session.setMaxInactiveInterval(60 * 10); // 세션 유지 시간 설정: 60초 * 10 -> 10분
+			
+			// * 로그인 성공이면 포인트 지급
+			PointDto pointDto = new PointDto();
+			pointDto.setMno(loginMno);
+			pointDto.setPocomment("로그인");
+			pointDto.setPocount(1);
+			MemberDao.getInstance().setPoint(pointDto);
 		} // if end
 		
 		// 4. [ 자료(DTO/자바)타입을 JS(JSON)타입으로 변환한다.]

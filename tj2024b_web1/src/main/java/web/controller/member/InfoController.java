@@ -22,29 +22,26 @@ public class InfoController extends HttpServlet {
 	protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 		// 1. [HTTP 요청의 header body 자료(JSON)를 자바(DTO)로 받는다.]
         // GET 요청은 일반적으로 본문이 없으므로 생략됩니다.
-
         // 2. [ 데이터 유효성검사 ]
         // 세션에서 로그인된 회원번호를 가져오므로 유효성 검사가 필요하지 않습니다.
-
         // 3. [ DAO 에게 데이터 전달 하고 응답 받기 ]
 		MemberDto result = null; // 조회된 회원 정보를 저장할 변수
-		
 			// (1) 현재 로그인된 회원의 번호: 세션 객체 내 존재. 속성명: loginMno
 		HttpSession session = req.getSession(); // 세션 객체 가져오기
 		Object object = session.getAttribute("loginMno"); // 세션 객체 내 지정한 속성 값 가져오기
-		
 			// (2) 만약에 세션 객체 내 지정한 속성값이 존재하면 로그인 회원번호를 타입 변환한다.
 		if (object != null) {
 			int loginMno = (Integer)object; // 세션에서 가져온 값을 정수형으로 변환
-			
 			// (3) 현재 로그인된 회원번호를 매개변수로 전달하여 회원 정보를 조회한다.
 			result = MemberDao.getInstance().myInfo(loginMno); // DAO를 통해 회원 정보 조회
+			// * 내 (남은)포인트 조회
+			int mpoint = MemberDao.getInstance().getPoint(loginMno);
+			result.setMpoint(mpoint);
 		} // if end
 		
 		// 4. [ 자료(DTO/자바)타입을 JS(JSON)타입으로 변환한다.]
 		ObjectMapper mapper = new ObjectMapper(); // JSON 변환을 위한 ObjectMapper 객체 생성
 		String jsonResult = mapper.writeValueAsString(result); // 회원 정보를 JSON 문자열로 변환
-		
 		// 5. [ HTTP 응답의 header body 로 application/json 으로 응답/반환하기]
 		resp.setContentType("application/json"); // 응답 타입을 JSON으로 설정
 		resp.getWriter().print(jsonResult); // JSON 형식으로 회원 정보 반환
