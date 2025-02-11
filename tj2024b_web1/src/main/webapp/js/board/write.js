@@ -32,12 +32,13 @@ const onWrite = () => {
 	} // option end
 	
 	// 5.
-	fetch( '/tj2024_web1/boaed' , option )
+	fetch(`/tj2024b_web1/board` , option )
 		.then( r => r.json() )
 		.then( data => {
 			console.log( data );
 			if( data == true ){
 				alert('글쓰기 성공');
+				location.href=`/tj2024b_web1/board/board.jsp?cno=${cno}`
 			}else{
 				alert('글쓰기 실패');
 			} // if else end

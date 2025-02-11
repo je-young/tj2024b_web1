@@ -26,9 +26,16 @@
 				</tr>
 			</thead>
 			<tbody>
-			
+			<!-- board.js 에서 동적으로 코드 생성 -->
 			</tbody>
 		</table>
+		
+		<!-- 부트스트랩 : 페이지네이션 -->
+		<nav aria-label="Page navigation example">
+		  <ul class="pagination pagebtnbox">
+		    <!-- board.js 에서 동적으로 코드 생성 -->
+		  </ul>
+		</nav>
 	
 	</div>
 	
