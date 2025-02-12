@@ -7,7 +7,7 @@
 // [1] 게시물 1개 조회
 const findByBno = () => {
 	// 1. URL 주소상의 bno(조회할번호)를 가져오기
-	const bno = new URL( location.href ).searchParams.get( bno );
+	const bno = new URL( location.href ).searchParams.get( 'bno' );
 	// 2. fetch
 	const option = { method : 'GET' }
 	fetch( `/tj2024b_web1/board/view?bno=${ bno }` , option )
