@@ -36,6 +36,7 @@
 	        <li class="nav-item"> <a class="nav-link" href="/tj2024b_web1/board/board.jsp?cno=3">FAQ</a> </li>
 	        <li class="nav-item"> <a class="nav-link" href="/tj2024b_web1/board/board.jsp?cno=4">튜토리얼</a> </li>
 	        <li class="nav-item"> <a class="nav-link" href="/tj2024b_web1/board/board.jsp?cno=5">사용자리뷰</a> </li>
+	        <li class="nav-item"> <a class="nav-link" href="/tj2024b_web1/chatting/chatting.jsp">채팅</a> </li>
 	        
 	        <!-- 드롭다운 -->
 	        <li class="nav-item dropdown">
@@ -54,12 +55,16 @@
 	      
 	      <!-- 오른쪽 메뉴 목록 -->
 	      <ul class="navbar-nav me-end mb-2 mb-lg-0 loginmenu"> <!-- me-end : 오른쪽 정렬 -->
-	      
+	      	<!-- 로그인 상태를 header.js 에서 동적 으로 적용 -->
 	      </ul>
-	      
+	      	
 	    </div>
 	  </div>
 	</nav>
+	
+		<div class="alarmbox" style=" position: fixed; bottom: 10px; left: 10px; ">
+			<!-- 로그인 알람을 토스트 형태로 header.js 에서 동적 으로 적용 -->
+		</div>
 	
 	<!-- 부트스트랩 JS -->
 	<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>

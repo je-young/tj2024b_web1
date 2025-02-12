@@ -22,11 +22,17 @@ const onLogin = () => {
 		headers : { 'Content-Type' : 'application/json' } , // - 요청할 http body 타입 설정
 		body : JSON.stringify(obj) // - 요청할 http 자료 , 자료를 JSON 형식의 문자열 타입 으로 변환
 	} // option end
+	
 	// * fetch
 	fetch('/tj2024b_web1/member/login' , option)
 		.then(response => response.json())
 		.then(data => {
-			if(data > 0){ alert('로그인 성공'); location.href="../index.jsp"; } // ../ 상위 폴더로 이동 뜻
+			if(data > 0){ 
+				alert('로그인 성공'); 
+				console.log( alarmSocket );
+				alarmSocket.send( `${ mid }님 접속했어요.` );
+				location.href="../index.jsp"; 
+			} // ../ 상위 폴더로 이동 뜻
 			else{ alert('로그인 실패'); }
 		})
 		.catch(error => { console.log(error) })
